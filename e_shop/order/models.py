@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from e_shop.product.models import Product
+from product.models import Product
 
 
 class OrderItem(models.Model):
@@ -12,7 +12,7 @@ class OrderItem(models.Model):
 
 class Order(models.Model):
     items = models.ManyToManyField(OrderItem)
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE(), related_name='orders')
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='orders')
     created_at = models.DateTimeField(auto_now=True)
     ordered_at = models.DateTimeField()
 
